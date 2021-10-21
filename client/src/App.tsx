@@ -22,7 +22,7 @@ export class App extends React.PureComponent<{}, AppState> {
 
 	async componentDidMount() {
 		this.setState({
-			tickets: await (await api.getTickets()).sort((a, b) => a.id.localeCompare(b.id))
+			tickets: (await api.getTickets()).sort((a, b) => a.id.localeCompare(b.id))
 		});
 	}
 
@@ -49,13 +49,12 @@ export class App extends React.PureComponent<{}, AppState> {
 			{filteredTickets.map((ticket) => (<li key={ticket.id} className='ticket'>
 				<div className='hide' onClick={()=> addToHidden(ticket.id)}> Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
+				
 				<ShowMoreText
                 /* Default options */
                 lines={3}
                 more="Show more"
                 less="Show less"
-                className="content-css"
-                anchorClass="my-anchor-css-class"
                 expanded={false}
                 width={0}
                 truncatedEndingComponent={"... "}
