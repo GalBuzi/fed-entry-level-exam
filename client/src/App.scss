@@ -21,6 +21,10 @@ body {
 		margin: 12px 5px;
 	}
 
+	#restoreTickets {
+		color: #4185bd;
+	}
+
 	header {
 		width: 100%;
 		flex-shrink: 0;
@@ -81,8 +85,22 @@ body {
 			&:hover {
 				box-shadow: 0 2px 6px 1px #d3d7da;
 			}
+			
+
+			.hide {
+				font-size: 10px;
+				display: flex;
+    			flex-wrap: wrap;
+    			justify-content: flex-end;
+				color: #3899ec;
+				opacity: 0%;
+				&:hover {
+					opacity: 100%;
+				}
+			}			
 
 			.title {
+				display: flex;
 				margin: 15px 0;
 				font-size: 16px;
 				font-weight: 400;

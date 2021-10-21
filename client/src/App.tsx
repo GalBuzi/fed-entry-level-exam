@@ -4,6 +4,7 @@ import {createApiClient, Ticket} from './api';
 
 export type AppState = {
 	tickets?: Ticket[],
+	hiddenTickets: Ticket[],
 	search: string;
 }
 
@@ -12,6 +13,7 @@ const api = createApiClient();
 export class App extends React.PureComponent<{}, AppState> {
 
 	state: AppState = {
+		hiddenTickets: [],
 		search: ''
 	}
 
@@ -19,7 +21,7 @@ export class App extends React.PureComponent<{}, AppState> {
 
 	async componentDidMount() {
 		this.setState({
-			tickets: await api.getTickets()
+			tickets: await (await api.getTickets()).sort((a, b) => a.id.localeCompare(b.id))
 		});
 	}
 
@@ -28,9 +30,23 @@ export class App extends React.PureComponent<{}, AppState> {
 		const filteredTickets = tickets
 			.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(this.state.search.toLowerCase()));
 
+		const addToHidden = (val: string) => {
+			let index = filteredTickets.findIndex(function(o){
+				return o.id === val;
+		   })
+
+			let ticketToHide = filteredTickets.splice(index, 1)[0];
+		   
+			this.setState({
+				hiddenTickets : [...this.state.hiddenTickets,ticketToHide].sort((a, b) => a.id.localeCompare(b.id)),
+				tickets : [...filteredTickets].sort((a, b) => a.id.localeCompare(b.id))
+			})
+		   
+		}
 
 		return (<ul className='tickets'>
 			{filteredTickets.map((ticket) => (<li key={ticket.id} className='ticket'>
+				<div className='hide' onClick={()=> addToHidden(ticket.id)}> Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
 				<footer>
@@ -51,15 +67,25 @@ export class App extends React.PureComponent<{}, AppState> {
 		}, 300);
 	}
 
+	restoreTickets = ()=> {
+		let t = this.state.tickets ? [...this.state.tickets , ...this.state.hiddenTickets].sort((a, b) => a.id.localeCompare(b.id)) : []
+		this.setState({
+			tickets:  t,
+			hiddenTickets : []
+
+		})
+	}
+
 	render() {	
 		const {tickets} = this.state;
+		const {hiddenTickets} = this.state
 
 		return (<main>
 			<h1>Tickets List</h1>
 			<header>
 				<input type="search" placeholder="Search..." onChange={(e) => this.onSearch(e.target.value)}/>
 			</header>
-			{tickets ? <div className='results'>Showing {tickets.length} results</div> : null }	
+			{tickets ? <div className='results'>Showing {tickets.length} results ({hiddenTickets.length} hidden tickets - <span id='restoreTickets' onClick={()=> this.restoreTickets()}>restore</span>)</div> : null }
 			{tickets ? this.renderTickets(tickets) : <h2>Loading..</h2>}
 		</main>)
 	}
