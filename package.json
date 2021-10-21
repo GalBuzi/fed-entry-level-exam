@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-show-more-text": "^1.4.2",
     "lerna": "^3.13.1"
+  },
+  "dependencies": {
+    "react-show-more-text": "^1.5.0"
   }
 }

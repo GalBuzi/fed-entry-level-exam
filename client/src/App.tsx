@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import {createApiClient, Ticket} from './api';
+import ShowMoreText from "react-show-more-text";
 
 export type AppState = {
 	tickets?: Ticket[],
@@ -48,7 +49,20 @@ export class App extends React.PureComponent<{}, AppState> {
 			{filteredTickets.map((ticket) => (<li key={ticket.id} className='ticket'>
 				<div className='hide' onClick={()=> addToHidden(ticket.id)}> Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
+				<ShowMoreText
+                /* Default options */
+                lines={3}
+                more="Show more"
+                less="Show less"
+                className="content-css"
+                anchorClass="my-anchor-css-class"
+                expanded={false}
+                width={0}
+                truncatedEndingComponent={"... "}
+            >
 				<p className='content'>{ticket.content}</p>
+			</ShowMoreText>
+				
 				{ticket.labels ? <ul className='labels'>{ticket.labels.map(l => <li className='label'>{l}</li>)}</ul> : null}
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
