@@ -49,6 +49,7 @@ export class App extends React.PureComponent<{}, AppState> {
 				<div className='hide' onClick={()=> addToHidden(ticket.id)}> Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
+				{ticket.labels ? <ul className='labels'>{ticket.labels.map(l => <li className='label'>{l}</li>)}</ul> : null}
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>

@@ -28,7 +28,8 @@
         "title": "How to Display Numbers with a Comma Separator",
         "content": "Hey Guys, \n\nStruggling with understanding how to get my code to display commas. While I know its been attempted to be answered before my situation is a bit unique I think. \n\nIn my my database I have both text and numbers (different columns). The numbers are inputted as 0000.00, but displayed with a comma within the database. When I tried to use this code: \n \n$w.onReady(function () {\n\n  $w(\"#dataset1\").onReady(() => {\n var number = Number($w(\"#table1\").text);\n    $w(\"#totalDealValue\").text = number.toLocaleString();\n\n  });\n\n});\n\nIt stated \"text does not exist for table1\" and \"totalDealValue is not a valid selector\"\n\nI'm not sure how to select a particular column within the dataset to display the information within the column with a comma. \n\nany help would be appreciated. Still learning to code!\n\nBest,\nGabe",
         "userEmail": "co@ac.na",
-        "creationTime": 1514870853599
+        "creationTime": 1514870853599,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "b52ad1dc-937b-54c3-81e9-2d433dd96bf6",
@@ -43,7 +44,8 @@
         "title": "Corvid App Developers Alpha?",
         "content": "I could have sworn that I saw reference to a new system that was in alpha testing that would allow developers to add a module to their Corvid developers system that would let them save apps, pages and widgets to help move them between sites. Now, I can't find what I remember reading. Anyone know what I am referring to?",
         "userEmail": "ozipagren@ihu.jm",
-        "creationTime": 1533526556410
+        "creationTime": 1533526556410,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "7091aeb2-cbf4-504f-8ce6-dee773212074",
@@ -58,210 +60,240 @@
         "title": "Bold numbers in automated text",
         "content": "Hi, I have a site where when the user selects from multiple drop down menus they get a result. How can I make it so that the a and b values below are bolded?\n\nexport function text_a_b(a,b){\n var Amin = session.getItem(\"Amin\");\n var Bmax = session.getItem(\"Bmax\");\n    $w(\"#resA\").text = \"If you enroll by October, you are estimated to pay between $\" + a + \" and $\" + b + \" per month\"; \n\n}",
         "userEmail": "marfetlub@wopol.as",
-        "creationTime": 1543752057872
+        "creationTime": 1543752057872,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "4a8e9c43-4acb-5e3b-b045-b5beb57f9e10",
         "title": "Invoke a delete confirmation lightbox from another lightbox",
         "content": "I have a lightbox that queries a collection and populates a table which is linked to a dataset. When a user selects a row in the table, I want to open a second lightbox \"Delete Verification\" asking the user to confirm deleting the item.  The user selects either a Yes button or a No button which closes the \"Delete Verification\" lightbox and sets a data variable called \"confirmed\" to a value of either \"yes\" or \"no\". \nThen, the first lightbox checks this return value and if \"yes\" it calls the dataset1.remove function.\n\nThe problem is the \"Delete Verification\" lightbox does not open. Here is the pertinent code.  Note: the \"Delete Verification\" lightbox is called from several pages and it works fine. It just doesn't open when called from this particular lightbox.\n\nexport function table1_rowSelect(event) {\n //delete the selected row\n let tableRowIndex = event.rowIndex;\n    console.log(\"tableRowIndex = \" + tableRowIndex); // 2 if the third row selected\n \n //ask user to confirm before deleting the item\n    $w(\"#dataset1\").setCurrentItemIndex(tableRowIndex) // sets the dataset rowIndex\n      .then( () => {\n        console.log(\"open the lightbox asking user to confirm deletion\");\n        (wixWindow.lightbox.open(\"Delete Verification\"))  //########## THIS LIGHTBOX DOES NOT OPEN #########\n             .then( (data) => {\n let userAction = data.confirmed;\n                 console.log(\"userAction = \" + userAction);\n if (userAction === \"yes\") {\n                    $w(\"#dataset1\").remove();\n                }\n             })\n \n      } );\n}\n\n",
         "userEmail": "di@modude.mc",
-        "creationTime": 1543815282858
+        "creationTime": 1543815282858,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "7181cec4-cf43-5936-a75b-c1d5f8a7e00e",
         "title": "twilio resister otp not work",
         "content": "\nhi \ni'm newbie/beginer to buid webside\ni want to use sms authentication mobile number\nfor newuser register\n\nnow fucntion don't work\n\nplese help me fix this\n\nthank you\n\n(sorry for english)\n\n\n\n\n\n \n\n\n",
         "userEmail": "zorjubuw@us.mh",
-        "creationTime": 1528964107501
+        "creationTime": 1528964107501,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "34cf1686-2c1c-54da-9d45-e64fa270422f",
         "title": "Fetch BLOCKED by CORS??",
         "content": "I'm experiencing the following error when trying to use my POST function from another Wix site.\n\nAccess to fetch at 'https://www.mitchwagnerdesign.com/_functions/csv' from origin 'https://www.bedminsterptg.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.\n\nPlease help me figure out why 'Access-Control-Allow-Origin': '*' is not covering this.\n\nhttp-function on https://www.mitchwagnerdesign.com\nexport function post_csv(request) {\n let options = {\n        headers: {\n 'Access-Control-Allow-Origin': '*',\n 'Content-Type': 'application/json'\n        }\n    };return request.body.json()\n        .then((body) => {\n            body.expirationDate = new Date(new Date().getTime() + (24 * 60 * 60 * 1000))\n return wixData.insert(\"CSVExportData\", body, {\n \"suppressAuth\": true,\n \"suppressHooks\": false\n            });\n        })\n        .then((results) => {\n            options.body = {\n \"_id\": results._id,\n \"url\": \"https://www.mitchwagnerdesign.com/_functions/csv/\" + results._id,\n \"expiration\": results.expirationDate\n            };\n            console.log(\"RETURNING DATA\")\n            console.log(options)\n return created(options);\n        })\n // something went wrong\n        .catch((error) => {\n            options.body = {\n \"error\": error\n            };\n return serverError(options);\n        });\nCalling the Method from https://www.bedminsterptg.com\nfetch(\"https://www.mitchwagnerdesign.com/_functions/csv\", {\n            method: \"post\",\n            headers: {\n \"Content-Type\": \"text/plain\"\n            },\n            body: '*******PRIVATE*DATA*REDACTED********'\n        })\n        .then((httpResponse) => {\n            console.log(\"REQUEST SENT\");\n if (httpResponse.ok) {\n return httpResponse.json();\n            } else {\n                $w(\"#buttonDownload\").enable();\n return Promise.reject(\"Fetch did not succeed\");\n            }\n        })\n        .then((json) => {\n            console.log(json);\n            wixLocation.to(json.url);\n            $w(\"#buttonDownload\").enable();\n        })\n        .catch((err) => {\n            console.log(err)\n            $w(\"#buttonDownload\").enable();\n        });\n",
         "userEmail": "bep@dov.sh",
-        "creationTime": 1524338473695
+        "creationTime": 1524338473695,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "a08ded46-92b0-52f5-bdd2-b7ccb700829b",
         "title": "Multiple GetJSON without response",
         "content": "Hello everyone,\n\nI'm trying to sync between a software and the wix database but I have a problem when I try to make several requests. \n\nHere is my code: https://www.codepile.net/pile/zAY0d4ao\n\nHere the input in console.log :\npage : 0 loading\npage : 0 loaded\npage : 1 loading\nWhy page 1 is not loaded ? \n\nThe url is correct, no error detected.\n\nAn idea of the problem ?\n\nThanks,\n\nYannik",
         "userEmail": "mowa@puzoigi.my",
-        "creationTime": 1527845968004
+        "creationTime": 1527845968004,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "820b51bc-1bcc-581a-88ae-f502e2cecd8b",
         "title": "CONFIRMED BUG: Background video fails to load with errors 403 and CORS",
         "content": " \nI can change with code page backgrounds with images but not with videos using $w(Document).background.src\nI'm talking about changing between stock Wix background videos in the Wix video manager, not external videos.\n\nSo with the API one can obtain the URLs for images and videos and they look like these:\nwix:image://v1/8034aa3291a54c489a7b7a3121d994f9.png/Bananas.png#originWidth=1177&originHeight=1200\n\nwix:video://v1/11062b_03c50f8fe4a34cc297a984e483a282ef/_#posterUri=/11062b_03c50f8fe4a34cc297a984e483a282eff000.jpg&posterWidth=1920&posterHeight=1080\n\nI store the URL in session storage and then reload the page.\nThen I can change the page background with this code inside the onReady():\n\n$w(\"Document\").background.src = \"wix:image:// ...\";\n\n$w(\"Document\").background.src = \"wix:video:// ...\";\n\n\nWorks for images, fails for videos.\nChrome just fails with this:\n\n \nThis lead me to believe that the URL for the video was bad.\nI spent too much time looking, testing and looking some more for an answer.\nFinally, using MS Edge, I got two different error messages that were helpful:\n\n \n and occasionally: \n \n Plugging one of the Wix video URLs into Chrome gives this 403 error: \n \nSo I have to conclude that Wix/Corvid is not allowing my Wix pages to access stock Wix videos in the Wix video manager - which should be an error on the Wix/Corvid end, not a feature.\n\nHere is a test page so you can see the error messages when requesting a change of video background:\n\n(use Chrome or MS Edge and look at console - FireFox has an error message that blocks the other messages)\nhttps://www.ualmatrix.com/clock-minimal-image \nAfter initial load click the \"Show URL\" button first so you can confirm the current video URL.Then select backgrounds from the \"Theme\" dropdown list.\nNote that the images work (page reloads and changes background image inside the onReady() ), and the videos have various failures:\nSometimes they fail with a 403 message and no backup image, and others show the backup image without an error message.\nOccasionally a CORS error pops up too.\nFull URL for Wix video background \"Ocean\"\nwix:video://v1/11062b_95d34f15761e4114a57b17823228948e/_#posterUri=11062b_95d34f15761e4114a57b17823228948ef000.jpg&posterWidth=1920&posterHeight=1080\n\nApparently, that gets converted internally by the Wix server to:\nhttps://video.wixstatic.com:443/11062b_95d34f15761e4114a57b17823228948e/1080p/mp4/file.mp4\n\nAnd since Wix thinks thinks my Wix page should not have access to that URL, it loads the poster instead (some files do and some don't):\n_#posterUri=11062b_95d34f15761e4114a57b17823228948ef000.jpg&posterWidth=1920&posterHeight=1080  \n\nTo summarize the dilemma:\nIf my Wix/Corvid pages can change stock Wix background images, then the same should also apply to stock Wix background videos. Instead, the video URLs are blocked, resulting in a 403/CORS error.\n\nSince videos are bandwidth intensive, I can see why Corvid would be careful with them, but it seems they went a bridge too far when a Wix/Corvid page cannot access Wix/Corvid stock videos.\n\nMaybe I'm overlooking something I can do on my end, but this looks very much like a problem on the Wix end of things.\n\nWix/Corvid has server settings that allow page background image changes in the onReady() part of pages. But, it prohibits page background videos to be changed the same way as the images.\n\nLooks like a Wix/Corvid system error to me (or a flawed policy), not a feature.\nSince this is a suspected bug, I sent it to tech support.\nThey told me to place the concern in the forums - the usual circular reference games.\n\nAny assistance with this matter is greatly appreciated. \n",
         "userEmail": "rujruvjiv@uw.mx",
-        "creationTime": 1526445637085
+        "creationTime": 1526445637085,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "6358ae3f-0eb4-5bea-aae2-dd358e0c3988",
         "title": "Dynamic Header",
         "content": "I was hoping that someone would know how to make a header resize once scrolling. \n \nThis would be the main header (at the top of the page). Once scrolling, the logo would switch to this:\n\n \nPlease ignore that the header buttons on the right side are different.\n\nCan anyone help me out?!\nJon",
         "userEmail": "icuansug@vazi.ma",
-        "creationTime": 1545448296597
+        "creationTime": 1545448296597,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "a9b525d4-0e89-5bae-a3dd-96dbad69f5d8",
         "title": "Wix code not working in Safari?",
         "content": "Can anyone tell me why Wix code is failing to work in Safari? Works great in Chrome and Firefox.\nIf they're writing a coding system (sort of closely related to javascript) why it should not work on all platforms?\nReally need this to work ASAP. Just launch a corporte site that worked last week but not now???",
         "userEmail": "won@lusdagsuw.ke",
-        "creationTime": 1526121084533
+        "creationTime": 1526121084533,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "a20f3897-5d05-5853-9441-b006748969b1",
         "title": "Debug wix code in Chrome Developer Tools",
         "content": "Hi, \nI'm trying to put breakpoint in the code I wrote for a page and I'm following the instructions like this \"Loading the code for the YourPage page. To debug this code, open pqbzj.js in Developer Tools.\".\nUnfortunately is not clear where I could find this file. In the Sources tab I looked in all the nodes but I don't see the file. Could you please explain to me where can I find it? \n \n",
         "userEmail": "fe@kuedjev.ma",
-        "creationTime": 1530408178692
+        "creationTime": 1530408178692,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "a28963ee-6fc6-59be-a871-3cea2941deab",
         "title": "Trigger Different Lightboxes According to Time of Day",
         "content": "Hi,\n\nI would like to display a different lightbox according to the time of day a user is on the website.  For example, I would like to display a breakfast special until 10:30 am, a lunch special from 10:30 to 1:30 pm, and an afternoon wine special from 1:30 to 4:00 pm.\n\nCan somebody outline a script I could modify for this purpose.  I am brandnew to both Wix and Corvid.\n\nMany thanks.\n\nTed",
         "userEmail": "reglensug@zo.tk",
-        "creationTime": 1545177212164
+        "creationTime": 1545177212164,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "0b981848-fced-5024-821d-87aefdc85be1",
         "title": "build a personalized feed for each user",
         "content": "Hi Corvid community, I'm trying on my site to allow members to follow each other. I followed the different posts on this forum, I managed to create a database that allows me to know who follows who. \n\nNow I would like to allow the site members to be able to follow the activities of the people they follow. For this purpose, I have a database with all the data from these members! \nBut I find myself stuck, I can't customize the repeater so that it only displays the activities of the people being monitored. I don't know how to connect all the databases to make a perfect feed for my users !\n\nI hope you can help me !  \nThank you in advance, and great job for the forum! \n\n",
         "userEmail": "tondikavu@ru.am",
-        "creationTime": 1542292889192
+        "creationTime": 1542292889192,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "dea10b2a-6cd3-5aea-bcd0-5ba478753740",
         "title": "Using InsertReference() for following functionality .weird error, field error?!",
         "content": "okay so essentially I want to add my current user that is logged into a multi reference field of another user once they press a follow button on that users profile.\n\nSo if I want to follow your account, I am trying to use insertReference() to insert a reference of my profile item into the followers field in your item. \n\nHere's my current code.\n\n I iterate through each item in the repeater and set its individual components to build the individual users \"mini profile\"\n\nitemdata refers to the current item.\n\n$w(\"#repeater2\").forEachItem(($item, itemData, index) => {//repeating user\n \n let belt = itemData.belt;\n\n let a=\"  | | | |  \";\n if (itemData.stripe===\"0\"){     a=\"`````````\";}\n else if (itemData.stripe===\"1\"){a=\"`|```````\";}\n else if (itemData.stripe===\"2\"){a=\"`| |`````\";}\n else if (itemData.stripe===\"3\"){a=\"`| | |```\";}\n else if (itemData.stripe===\"4\"){a=\"`| | | |`\";}\n\nhere i'm setting their profile up. nothing special\n            $item('#repeatedName').text=itemData.name;\n            $item('#repeatedProfilePic').src=itemData.photoProfile;\n            $item('#repeatedContainer').src=itemData.photoCover;\n            $item('#repeatedBoxBelt').style.backgroundColor = session.getItem(belt);\n            $item('#repeatedStripes').text = a;\n \n            $item('#repeatedFollowButton').onClick((event)=>{\nwhen the button is pressed i call the following function which i have created and i pass in the current profiles itemData\n                followUser(itemData);\n            });\n        });\n\n\nexport function followUser(itemData){\n //must add current user(logged in user) to selected users followers\n //inserts a reference to the item with ID of the current user in the followers field of the item in the USER_ProfileData collection with the ID of the selected user(the one the current user wants to follow).\n\n    wixData.insertReference(\"USER_ProfileData\", \"followers\", itemData._id, wixUsers.currentUser.id)\n    .then( () => {\n        console.log(\">Reference inserted \");\n    } )\n    .catch( (error) => {\n\n        console.log(error);\n    } );\n}\n\nWhen I press the follow button I am getting the following printed to the console.\n\n Error: Provided relationshipAttribute [followers] is not a multi-reference field. \nThe field is in fact a multi reference field...\n\njust in case you want to look around. HERES THE LINK!\nwww.grapplehub.net\n\nTHIS PROBLEM HAS BEEN BUGGING ME FOR A LONG TIME!! ANY ADVICE IS VERY MUCH APPRECIATED!\n\n\n",
         "userEmail": "kuebemic@ufvewed.gi",
-        "creationTime": 1538861834942
+        "creationTime": 1538861834942,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "55d23494-5230-5213-a36d-5273ab4f3223",
         "title": "Making a dynamic sum based on user ",
         "content": "Hey guys, \n\nwell, this one might be complicated to explain. I have a members area where I use a dynamic page to display campaigns. Each time a person completes a campaign would get assigned a number of X points. These points are to be displayed in their account page.\n\nIn order of events: \n\n- A campaign is displayed\n- Participant completes the campaign\n- Points are assigned (based on the field containing the campaign points()\n- Points are added (from all completed campaigns) \n- Sum of points is displayed in the account page of the user. \n\nI'm completely lost on where to start building here. Please help!\n",
         "userEmail": "vireel@jobhul.cy",
-        "creationTime": 1535726898499
+        "creationTime": 1535726898499,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "ae280839-eef6-5761-ac6d-0e712b1e7d64",
         "title": "Controlling repeater load",
         "content": "Hi, How can i set my repeater to load each time 4 items when i scroll down? like in this web site:\n https://eduardo.nadlan-neto.net/he ",
         "userEmail": "zuj@ujko.cf",
-        "creationTime": 1515301356700
+        "creationTime": 1515301356700,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "e469d55a-177b-5e12-b5a8-4daa485c5502",
         "title": "Integrating wix' and the hotels' booking systems",
         "content": "Hi all\n\nDoes anybody know whether it is possible to add a booking system, so that users can book different hotels from my wix website?  \n\nHow do I intergrate wix' and the hotels' booking system?\n\nHope that you can help! \n\nThanks....",
         "userEmail": "kislef@zot.bd",
-        "creationTime": 1539710180699
+        "creationTime": 1539710180699,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "ee83ff74-cac2-598a-97c3-52ca22b6f5ab",
         "title": "Link database to services\n",
         "content": " \nHello!\nI'm looking for an orientation. If I'm not in the proper place feel comfortable to delete.\nI want to create a plataform or something in this way where I could connect a service to a visitor; acting between many professionals that will constantly update their content and possible clients (visitors until then), intermediating both.\nSo for that I was thinking in use a database linked to dynamic pages and offering a possibility to the visitor to hire that service in a automated way through the website.\nIs that a possible and good a ideia to do in the plataform? Do you suggest using Corvid for any function or the editor is enough? It should fit well in a member's area? Suggestions are very welcome. https://192168ll.onl/ https://xender.vip/ https://testmyspeed.onl/\nThanks in advance!",
         "userEmail": "he@cud.mc",
-        "creationTime": 1518074759400
+        "creationTime": 1518074759400,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "ed306501-3902-5e54-b645-2fc213695373",
         "title": "How to code a button to redirect users to another page when clicked",
         "content": "Hi, I am wondering how I would be able to code a button using the coding feature in corvid to redirect a user to another page on my website. I've looked around and have tried a lot of stuff to no avail. This is in attempt to find a solution to the issue where users are not redirected to another website page after submitting a payment forum, which I understand is a current issue being worked on. \n#code #button #easy ",
         "userEmail": "zadazid@rekucu.gs",
-        "creationTime": 1534757469383
+        "creationTime": 1534757469383,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "bf2b4e4a-8194-5ee6-8536-5dba6e952dd0",
         "title": "User button upload limited dimension and refresh",
         "content": "Hi everyone,\nI am trying to write the code to limit the size of the image file that User can upload and refresh the photo after loaded. \nCan you please tell me where I'm wrong and what's missing? In fact doesn't works good and show me problem with \"size\"\n\nThanks in advance, as always\n\n\n \nexport function BBrochureUpload_change(event) { .    //button to upload event\n let mySizeLimit = 2000;     //Mb limited\n let files = $w(\"#BBrochureUpload\").value;       //button to upload\n let fileSize = files[0].size;\n if (fileSize < mySizeLimit) {\n        $w(\"#BBrochureUpload\").startUpload()\n        .then((uploadedFile) => {\n                        $w(\"#image1\").expand();       // images show after upload\n                    })\n                    .catch((uploadError) => {\n                        console.log(`File upload error: ${uploadError.errorCode}`);\n                    });\n            } else {\n                $w(\"#image1\").collapse();    \n                $w(\"#TLimited\").show();    // write \" Image to large to upload\"\n   }\n",
         "userEmail": "ocuvu@nur.mx",
-        "creationTime": 1524696676869
+        "creationTime": 1524696676869,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "ae80d629-3339-582f-b80d-1a2003109f16",
         "title": "Calling a module from job scheduler",
         "content": "Hi\n\nI made a jobs scheduler and I need it to use a module (.jsw), not a .js because I want to send data threw Zapier once a day.\n\nis it possible?\n\n-----------------------------------\njobs.config:\n \n{\n \"jobs\": [\n    {\n \"functionLocation\": \"/dailyReport.report\",\n \"description\": \"daily report\",\n \"executionConfig\": {\n \"time\": \"11:14\"\n      }\n    }\n  ]\n}\n\ndailyReport.jsw:\n\n \nimport {usewebhook} from 'backend/useWebhook.jsw';\nimport wixData from 'wix-data';\n\n\nexport function report (){\n let data = {\"data\": \"something\"};\n let url = \"https://hooks.zapier.com/**********\";\n\n    usewebhook (data, url);\n}\n",
         "userEmail": "rovtimov@epasfo.gh",
-        "creationTime": 1529587395310
+        "creationTime": 1529587395310,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "fb09f153-aafd-5e8a-8062-0a2a1a92772c",
         "title": "https://healthcircle365.com/iron-core-edge/",
         "content": " Iron Core Edge  By no means snort at his makes an attempt to make you completely happy, don't shaggy dog story with male capabilities and sizes - this is essentially Iron Core Edge most painful situation for Iron Core Edge fundamental ideas of riskless sex. Who argues that his physiognomy at Iron Core Edge time of Iron Core Edge seek for that very cherished point or in an try to unbutton a bra explanations you to have probably Iron Core Edge most tender feelings? Don't make fun of your ex! It most effective appears that this passion should be flattered, but actually he will think that at some factor he'll also grow to be an “ex”, after which you're going to snigger at him in Iron Core Edge same method. And, oddly enough, you will have to not snigger immediately, even if you remembered whatever very humorous. It is not likely that you will prove Iron Core Edge MCH that didn't snigger at him, but for those who prove it, he will still be very offended! In any case, alternatively of having fun with what is going down, you believe of some thing wholly one of a kind. Probably Iron Core Edge most passionate fish there's a style of decorative fish, often called \"kissing gourami.\" At these voluptuous individuals Iron Core Edge kiss can last Iron Core Edge entire 25 minutes! Essentially Iron Core Edge most indecent library Iron Core Edge older new release could resent Iron Core Edge contents of Iron Core Edge shelves of bookstores, but they are unlikely to grasp that essentially Iron Core Edge most vast collection of books about intercourse is contained in Iron Core Edge Vatican library. Iron Core Edge gathering has 25,000 volumes. Iron Core Edge strangest bride in some parts of South India is still preserved custom prohibiting Iron Core Edge younger brother to marry earlier than Iron Core Edge older. For this reason Iron Core Edge tradition that deceives this tradition has been preserved: to solemnly mix Iron Core Edge wedding of an elder brother with a tree (or with Iron Core Edge spirit residing within Iron Core Edge tree). Probably Iron Core Edge most ridiculous contraception An absolute document holder in phrases of extravagant approaches of contraception may also be viewed Iron Core Edge Greek health care provider Soran.  \n https://healthcircle365.com/iron-core-edge/ ",
         "userEmail": "imguhiz@milzi.tf",
-        "creationTime": 1545399819648
+        "creationTime": 1545399819648,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "5ddec3bf-9409-514f-8538-0113498d3f57",
         "title": "Cannot change Content-Type of the response from backend http function",
         "content": " I have a http post function in the backend of my site and i would like it to return text/html as the Content-Type which i have set in the options. Although when I call the function the responses Content-Type is application/json.\n\nBelow you can see my code\n \nexport function post_acsexit(request) {\n\n let options = {\n \"headers\": {\n \"Content-Type\": \"text/html\",\n        },\n \"body\": \"<html><body>tt</body></html>\"\n    };\n \n return ok(options);\n}\n",
         "userEmail": "luderog@izu.mp",
-        "creationTime": 1516143383861
+        "creationTime": 1516143383861,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "6adf3f03-1560-5c18-87d8-261e1aff7e3c",
         "title": "Is Corvid down for editors? ",
         "content": "Is there an issue with Corvid at the moment, unable to call any databases or add new ones in the editor currently. \n\nThanks \nChris Silvester ",
         "userEmail": "jezgek@tokcu.be",
-        "creationTime": 1538131141483
+        "creationTime": 1538131141483,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "11d0c998-870c-5f0c-abb9-20b2e7f53d93",
         "title": "Share website template through link ",
         "content": "Hi all, sorry if this question is kinda basic but I was wondering if it’s possible to share my site template to another Wix user through my editor link?\n\nI’ve seen a few admins do this so I do know if it’s only exclusive to them\n\nSimply copy pasting my editor.wixsite.com/html/editor/{ID}  to my desired account doesn’t work",
         "userEmail": "sitfopi@seja.lb",
-        "creationTime": 1528600849750
+        "creationTime": 1528600849750,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "2c9943e6-dc6a-5335-81fd-520b3774f68a",
         "title": "Pause slideshow (Stop the loop)",
         "content": "Hello. I'm trying to do what the OP was asking for on this thread:\nhttps://www.wix.com/corvid/forum/community-discussion/stop-this-slideshow\n\nUnlike him, I AM using the standard slideshow feature, and identical to him, would like the slideshow to stop after the 3rd slide and not continue to loop.\n\nI used the code suggested, and changed my id:\n$w.onReady(function () {\n    $w(\"#heroslider\").onChange((event, $w) => {\n let currentIndex = event.target.currentIndex; // 3\n \n if(currentIndex === 3){\n            $w(\"#heroslider\").pause();\n        }\n    });\n});\n\n\nHowever, the code is not working.\nSince the discussion on the previous thread continue to fix a Gallery issue, I'm re-starting this question to ask for help troubleshooting the slideshow issue. \n\nThank you!\n\n",
         "userEmail": "zulmuw@ra.mx",
-        "creationTime": 1541961841343
+        "creationTime": 1541961841343,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "04ab5c1c-b400-5977-8fd1-d41aacf3b22c",
         "title": "Automatic custom payment return to the customer",
         "content": " Adding a payment to access members area for online training.  This will allow me to upload videos that are accessible for 24 hours for monthly challenges.  Challenges last 28 days and Participants can register through paying  £28 per challenge with a refund of £8 upon completion of the challenge, as long as the website records that participant taking part for the whole session for the full 28 days – this should activate a refund of the £8. Is it possible in Wix via code ??",
         "userEmail": "fufvom@reropa.gy",
-        "creationTime": 1536536894459
+        "creationTime": 1536536894459,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "1dc76c3b-00dd-5d28-9515-c730ff516980",
         "title": "Find and Replace text for product description",
         "content": "Is there a way for me to search for a specific word throught all the product descriptions on my store, and replace with another word?",
         "userEmail": "conpi@in.th",
-        "creationTime": 1539565427013
+        "creationTime": 1539565427013,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "61015c38-e47d-56f0-b176-2b75b74ff113",
         "title": "Hide Mini Cart when using addToCart( )",
         "content": "Is it possible to hide the Minicart from opening every time an add to cart button is clicked on a repeater page ? Surely this should be simple to allow us to do with code but I can't seem to find any info on what the element #minicart is to hide.",
         "userEmail": "cizo@powinuf.ao",
-        "creationTime": 1521419757624
+        "creationTime": 1521419757624,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "f713c784-0783-5160-a8e4-9b8f299462d5",
         "title": "Failed to load initial data Error: {\"message\":\"value Some(150) for paging.limit is not valid\",\"details\":{}}\n",
         "content": "Suddenly getting this error pop up when changing the dataset number to display setting.\n Failed to load initial data Error: {\"message\":\"value Some(150) for paging.limit is not valid\",\"details\":{}}\n It is for a custom product collection repeater. \n Have tried to adjust the number of items to display in the dataset settings but it only works for under 100 products. Any ideas if it can work for more than 100?",
         "userEmail": "apuoh@di.tg",
-        "creationTime": 1523703671573
+        "creationTime": 1523703671573,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "1b082477-575e-52d5-8841-9fce75e2d6df",
         "title": "How to let SearchValue from Url",
         "content": "Hi everyone, I am a  newbie to using Wix Corvid.\nI would like to set coding from http:// domain.com/coverage?query= \"word\"\nthan the result will out put to repeater in same page, the \"word\" will show off on search bar.\n\nmy edit coding in following, please help and thx a lot\n\n \nimport {local} from 'wix-storage';\nimport wixData from 'wix-data';\n\n$w.onReady(function () {\n\n var sameWord = local.getItem(\"searchWord\");\n\n    $w(\"#input1\").value = sameWord;\n    $w(\"#input1\").placeholder = sameWord;\n    $w('#dataset1').onReady(function () {\n\n        search();\n    });\n\n});\n\n\nexport function searchButton_click() {\n\n    search();\n\nlet SearchValue = $w(\"#input1\").value;\n$w(\"#dataset1\").setFilter(wixData.filter().contains('subTitle', SearchValue).or(wixData.filter().contains('zone', SearchValue).or(wixData.filter().contains('description', SearchValue))));\n}\n \nfunction search() {\n\n    wixData.query('name')\n   .contains('name', $w(\"#input1\").value)\n   .or(wixData.query('name').eq('description', $w(\"#input1\").value))\n\n      .find()\n       .then(res => {\n  $w('#repeater1').data = res.items;\n\n    });\n\nlet SearchValue = $w(\"#input1\").value;\n$w(\"#dataset1\").setFilter(wixData.filter().contains('subTitle', SearchValue).or(wixData.filter().contains('zone', SearchValue).or(wixData.filter().contains('description', SearchValue))));\n\n}\n\n",
         "userEmail": "sijjo@ih.ng",
-        "creationTime": 1529854178644
+        "creationTime": 1529854178644,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "28679ee2-cb21-560c-85ed-14f4909e1d89",
         "title": "Progressive Web Apps (PWA)",
         "content": "Hey everyone, so I made a post about Progressive web apps a year ago, and wanted to get an update from Wix or it's users to see what's up.\n\nI want to turn my site into a Progressive Web App for IOS. \nIt goes as follows:\n- User visits site, Mobile site view loads\n- User adds site to homepage\n- User now has the website in fullscreen view as an app.\n\nIs this possible to achieve? I know that there is an app in the market that allows to convert the site into a PWA, but its not quite there yet.\n\nI think having the ability to make a site into a PWA would be a great feature, I mean, you could literally make an app bruh...",
         "userEmail": "im@ihi.vi",
-        "creationTime": 1518867438529
+        "creationTime": 1518867438529,
+        "labels": ["Login", "Problem", "Tutorial"]
     },
     {
         "id": "985edc12-a08f-541d-b670-9946bd4e9969",

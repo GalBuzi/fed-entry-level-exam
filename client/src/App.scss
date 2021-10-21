@@ -23,6 +23,7 @@ body {
 
 	#restoreTickets {
 		color: #4185bd;
+		cursor: pointer;
 	}
 
 	header {
@@ -90,6 +91,7 @@ body {
 			.hide {
 				font-size: 10px;
 				display: flex;
+				cursor: pointer;
     			flex-wrap: wrap;
     			justify-content: flex-end;
 				color: #3899ec;
@@ -110,6 +112,27 @@ body {
 
 			.content {
 				word-wrap: break-word;
+			}
+
+			.labels{
+				display: flex;
+    			flex-wrap: wrap;
+    			justify-content: flex-end;
+				color: #131250;
+			}
+
+			.label{
+				display: flex;
+    			flex-wrap: wrap;
+				margin: 5px;
+				background-color: #cae4f5; /* Green */
+  				border: none;
+				padding: 5px;
+				text-align: center;
+				text-decoration: none;
+				font-size: 14px;
+				margin: 4px 4px;
+				border-radius: 4px;
 			}
 			
 			footer {
