@@ -13,10 +13,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-js-pagination": "^3.0.4",
+    "@types/react-paginate": "^7.1.1",
     "@types/react-show-more-text": "^1.4.2",
-    "lerna": "^3.13.1"
+    "lerna": "^3.22.1"
   },
   "dependencies": {
-    "react-show-more-text": "^1.5.0"
+    "bootstrap": "^3.4.1",
+    "react-bootstrap": "^2.0.0",
+    "react-js-pagination": "^3.0.3",
+    "react-paginate": "^7.1.3",
+    "react-paginated-list": "^1.1.5",
+    "react-responsive-pagination": "^1.2.0",
+    "react-show-more-text": "^1.5.0",
+    "styled-components": "^5.3.3"
   }
 }

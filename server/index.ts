@@ -20,11 +20,15 @@ app.use((_, res, next) => {
 
 app.get('/api/tickets', (req, res) => {
 
-	// const page = req.query.page || 1;
+	const searchVal = req.query.searchVal
 
-	// const paginatedData = tempData.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+	const filteredBySearch = tempData.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(searchVal.toLowerCase()));
+
+	const page = req.query.pageNum || 1;
+
+	const paginatedData = filteredBySearch.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 	
-	res.send(tempData);
+	res.send({paginatedData:paginatedData, totalPages:Math.ceil(filteredBySearch.length/PAGE_SIZE)});
 });
 
 app.listen(PORT);

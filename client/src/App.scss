@@ -64,6 +64,37 @@ body {
 		font-size: 12px;
 	}
 
+	.center {
+		text-align: center;
+	  }
+	  
+	  .pagination {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	  }
+	  
+	  .pagination li {
+		display: flex;
+		flex-direction: column;
+		color: black;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color .3s;
+		border: 1px solid #ddd;
+		margin: 0 4px;
+	  }
+	  
+	  .pagination li.active {
+		background-color: #c7e6eb;
+		color: white;
+		border: 1px solid #c7e6eb;
+	  }
+	  
+	  .pagination li:hover:not(.active) {background-color: #ddd;}
+	  
+
 	.tickets {
 
 		margin: 0;

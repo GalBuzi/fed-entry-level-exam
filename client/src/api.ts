@@ -9,14 +9,18 @@ export type Ticket = {
 	labels?: string[];
 }
 
+export type jsonObj = {
+	paginatedData:Ticket[],
+	 totalPages:number}
+
 export type ApiClient = {
-	getTickets: () => Promise<Ticket[]>;
+	getTickets: (searchVal:string, pageNum:number) => Promise<jsonObj>;
 }
 
 export const createApiClient = (): ApiClient => {
 	return {
-		getTickets: () => {
-			return axios.get(`http://localhost:3232/api/tickets`).then((res) => res.data);
+		getTickets: (searchVal:string, pageNum:number) => {
+			return axios.get(`http://localhost:3232/api/tickets`, {params: {searchVal:searchVal, pageNum:pageNum}}).then((res) => res.data);
 		}
 	}
 }
