@@ -20,7 +20,7 @@ app.use((_, res, next) => {
 
 app.get('/api/tickets', (req, res) => {
 
-	const searchVal = req.query.searchVal
+	const searchVal = req.query.searchVal || ''
 
 	const filteredBySearch = tempData.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(searchVal.toLowerCase()));
 
