@@ -30,12 +30,5 @@ export type jsonObj = {
     type: typeof RESTORE_TICKETS,
   }
 
-  export type FilterParams ={
-    searchVal : string,
-    pageNum : number,
-    before_after : boolean,
-    date: number,
-    from: string
-  }
   
   export type AllDispatchTypes = GetTicketsByFilter | HideTicket | Restore

@@ -4,14 +4,21 @@ import {
     HIDE_TICKET, 
     AllDispatchTypes, 
     GET_TICKETS_BY_FILTER,
-    RESTORE_TICKETS, FilterParams
+    RESTORE_TICKETS
 } from "../action-type/index";
+
+export type FilterParams ={
+  searchVal : string,
+  pageNum : number,
+  before_after : boolean,
+  date: number,
+  from: string
+}
 
 export const api = createApiClient()
 
 export const getTicketsFromServer = (FilterParams:FilterParams) => async (dispatch: Dispatch<AllDispatchTypes>) => {
       const res = await api.getTickets(FilterParams)
-      console.log(res.searchVal)
       dispatch({
         type: GET_TICKETS_BY_FILTER,
         payload: res
