@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { FilterParams } from './state/action-type';
+import { jsonObj } from './state/action-type';
+import querystring from 'querystring'
 
 export type Ticket = {
 	id: string,
@@ -9,18 +12,14 @@ export type Ticket = {
 	labels?: string[];
 }
 
-export type jsonObj = {
-	paginatedData:Ticket[],
-	 totalPages:number}
-
 export type ApiClient = {
-	getTickets: (searchVal:string, pageNum:number) => Promise<jsonObj>;
+	getTickets: (FilterParams:FilterParams) => Promise<jsonObj>;
 }
 
 export const createApiClient = (): ApiClient => {
 	return {
-		getTickets: (searchVal:string, pageNum:number) => {
-			return axios.get(`http://localhost:3232/api/tickets`, {params: {searchVal:searchVal, pageNum:pageNum}}).then((res) => res.data);
+		getTickets: (FilterParams:FilterParams) => {
+			return axios.get(`http://localhost:3232/api/tickets?${querystring.stringify(FilterParams)}`).then((res) => res.data);
 		}
 	}
 }

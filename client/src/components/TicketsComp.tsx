@@ -11,10 +11,15 @@ function TicketsComp() {
 	const dispatch = useDispatch()
 	const state = useSelector((state:State)=> state.tickets)
 
-	console.log(state)
-
 	useEffect(()=>{ 
-		dispatch(getTicketsFromServer('',1))
+		let FilterParams = {
+			searchVal : '',
+			pageNum : 1,
+			before_after : false,
+			date: 0,
+			from: ''
+		}
+		dispatch(getTicketsFromServer(FilterParams))
 	}, [dispatch])
 
 	const restoreAllHidden = () => {

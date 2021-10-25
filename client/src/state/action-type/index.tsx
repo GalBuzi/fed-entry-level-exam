@@ -1,21 +1,20 @@
+import { Ticket } from "../../api";
+
 export const GET_TICKETS_BY_FILTER = "GET_TICKETS_BY_FILTER";
 export const HIDE_TICKET = "HIDE_TICKET"
 export const RESTORE_TICKETS = "RESTORE_TICKETS"
 
-export type Ticket = {
-	id: string,
-	title: string;
-	content: string;
-	creationTime: number;
-	userEmail: string;
-	labels?: string[];
-}
+
 
 export type jsonObj = {
 	 paginatedData:Ticket[],
-	 totalPages:number
+	 totalPages:number,
+   searchVal : string,
+   pageNum : number,
+   before_after : boolean,
+   date: number,
+   from: string
   }
-
 
   export interface GetTicketsByFilter {
     type: typeof GET_TICKETS_BY_FILTER,
@@ -29,6 +28,14 @@ export type jsonObj = {
 
   export interface Restore {
     type: typeof RESTORE_TICKETS,
+  }
+
+  export type FilterParams ={
+    searchVal : string,
+    pageNum : number,
+    before_after : boolean,
+    date: number,
+    from: string
   }
   
   export type AllDispatchTypes = GetTicketsByFilter | HideTicket | Restore

@@ -1,9 +1,9 @@
 import {
     GET_TICKETS_BY_FILTER, 
-    AllDispatchTypes, 
-    Ticket, 
+    AllDispatchTypes,  
     HIDE_TICKET,
     RESTORE_TICKETS} from '../action-type';
+import { Ticket } from "../../api";
 
 interface TicketsState{
     tickets : Ticket[],
@@ -16,7 +16,6 @@ interface TicketsState{
 const initialState : TicketsState = {
     tickets : [],
     hiddenCurrentPageTickets: [],
-    // currentPageTickets: [],
     totalPages : 0,
     search : '',
     currentPage : 1
@@ -27,11 +26,12 @@ const ticketsReducer = (state : TicketsState = initialState, action : AllDispatc
         case GET_TICKETS_BY_FILTER:
             return {
                 tickets: action.payload.paginatedData.sort((a, b) => a.id.localeCompare(b.id)),
-                currentPage : 1,
+                currentPage : action.payload.pageNum,
                 hiddenCurrentPageTickets: [],
                 totalPages : action.payload.totalPages,
-                search : state.search
+                search : action.payload.searchVal
             } 
+
         case HIDE_TICKET:
             let idToHide = action.payload
             let index = state.tickets.findIndex(function(o){
