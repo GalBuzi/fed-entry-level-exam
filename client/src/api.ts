@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FilterParams } from './state/action-type';
+import { FilterParams } from './state/actions/index';
 import { jsonObj } from './state/action-type';
 import querystring from 'querystring'
 
