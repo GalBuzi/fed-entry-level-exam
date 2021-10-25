@@ -1,8 +1,7 @@
 import React from 'react';
 import '../App.scss'
-import { useDispatch , useSelector} from "react-redux"
+import { useDispatch , } from "react-redux"
 import {hideTicket} from '../state/actions/index'
-import {State} from "../state/index"
 import ShowMoreText from "react-show-more-text";
 
 
@@ -17,7 +16,6 @@ interface ITicketProps {
 
 function TicketComp(props : React.PropsWithChildren<ITicketProps>) { //} : React.FC<{}> = ({}) => {
     const dispatch = useDispatch()
-	const state = useSelector((state:State)=> state.tickets)
 
     const addToHidden = (id: string) =>{
 		dispatch(hideTicket(id))

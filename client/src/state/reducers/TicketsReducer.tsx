@@ -1,6 +1,6 @@
 import {
-    TICKETS_SUCCESS, 
-    TicketDispatchTypes, 
+    GET_TICKETS_BY_FILTER, 
+    AllDispatchTypes, 
     Ticket, 
     HIDE_TICKET,
     RESTORE_TICKETS} from '../action-type';
@@ -22,15 +22,15 @@ const initialState : TicketsState = {
     currentPage : 1
 }
 
-const ticketsReducer = (state : TicketsState = initialState, action : TicketDispatchTypes) => {
+const ticketsReducer = (state : TicketsState = initialState, action : AllDispatchTypes) => {
     switch (action.type) {
-        case TICKETS_SUCCESS:
+        case GET_TICKETS_BY_FILTER:
             return {
                 tickets: action.payload.paginatedData.sort((a, b) => a.id.localeCompare(b.id)),
                 currentPage : 1,
                 hiddenCurrentPageTickets: [],
                 totalPages : action.payload.totalPages,
-                search : ''
+                search : state.search
             } 
         case HIDE_TICKET:
             let idToHide = action.payload

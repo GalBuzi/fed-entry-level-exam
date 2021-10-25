@@ -1,13 +1,24 @@
 import React from 'react';
-import {createApiClient, Ticket} from '../api';
 import '../App.scss'
+import { useDispatch} from "react-redux"
+import {getTicketsFromServer} from '../state/actions/index'
 
-function SearchComp() { //} : React.FC<{}> = ({}) => {
-	
+
+function SearchComp() { 
+	const dispatch = useDispatch()
+
+	const onSearch = (val: string) => {
+		
+		setTimeout(() => {
+			dispatch(getTicketsFromServer(val,1))
+		}, 300);
+	}
+
 
 	return (<div>
-		<h1>In Search Comp</h1>
-		
+		<header>
+ 			<input className = "search" type="search" placeholder="Search..." onChange={(e) => onSearch(e.target.value)}/> 
+		</header>
 		
         </div>)
 	

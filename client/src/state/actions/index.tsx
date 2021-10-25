@@ -1,20 +1,20 @@
 import {Dispatch} from "redux";
 import { createApiClient } from "../../api";
 import {
-    HideTicket, HIDE_TICKET, 
-    TicketDispatchTypes, 
-    TICKETS_SUCCESS,
-    RESTORE_TICKETS, restore
+    HIDE_TICKET, 
+    AllDispatchTypes, 
+    GET_TICKETS_BY_FILTER,
+    RESTORE_TICKETS,
 } from "../action-type/index";
 
 export const api = createApiClient()
 
-export const getTicketsFromServer = (searchVal:string, pageNum:number) => async (dispatch: Dispatch<TicketDispatchTypes>) => {
+export const getTicketsFromServer = (searchVal:string, pageNum:number) => async (dispatch: Dispatch<AllDispatchTypes>) => {
     try {
       const res = await api.getTickets(searchVal, pageNum)
   
       dispatch({
-        type: TICKETS_SUCCESS,
+        type: GET_TICKETS_BY_FILTER,
         payload: res
       })
   
@@ -24,7 +24,7 @@ export const getTicketsFromServer = (searchVal:string, pageNum:number) => async 
   };
 
 
-  export const hideTicket = (id : string) => (dispatch: Dispatch<HideTicket>) => {
+  export const hideTicket = (id : string) => (dispatch: Dispatch<AllDispatchTypes>) => {
     dispatch({
         type: HIDE_TICKET,
         payload: id
@@ -32,7 +32,7 @@ export const getTicketsFromServer = (searchVal:string, pageNum:number) => async 
   }
 
 
-  export const restoreTickets = () => (dispatch: Dispatch<restore>) => {
+  export const restoreTickets = () => (dispatch: Dispatch<AllDispatchTypes>) => {
     dispatch({
         type: RESTORE_TICKETS
     })

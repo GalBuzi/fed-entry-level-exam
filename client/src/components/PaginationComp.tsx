@@ -1,8 +1,8 @@
 import React from 'react';
-import {createApiClient, Ticket} from '../api';
 import '../App.scss'
+import ReactPaginate from 'react-paginate';
 
-function PaginationComp(){ //} : React.FC<{}> = ({}) => {
+function PaginationComp(){ 
 	
 
 	return (<div>

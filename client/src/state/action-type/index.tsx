@@ -1,4 +1,4 @@
-export const TICKETS_SUCCESS = "TICKETS_SUCCESS";
+export const GET_TICKETS_BY_FILTER = "GET_TICKETS_BY_FILTER";
 export const HIDE_TICKET = "HIDE_TICKET"
 export const RESTORE_TICKETS = "RESTORE_TICKETS"
 
@@ -17,8 +17,8 @@ export type jsonObj = {
   }
 
 
-  export interface TicketSuccess {
-    type: typeof TICKETS_SUCCESS,
+  export interface GetTicketsByFilter {
+    type: typeof GET_TICKETS_BY_FILTER,
     payload: jsonObj
   }
 
@@ -27,8 +27,8 @@ export type jsonObj = {
     payload: string
   }
 
-  export interface restore {
+  export interface Restore {
     type: typeof RESTORE_TICKETS,
   }
   
-  export type TicketDispatchTypes = TicketSuccess | HideTicket | restore
+  export type AllDispatchTypes = GetTicketsByFilter | HideTicket | Restore
