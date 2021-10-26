@@ -15,9 +15,9 @@ function TicketsComp() {
 		let FilterParams = {
 			searchVal : '',
 			pageNum : 1,
-			before_after : false,
-			date: 0,
-			from: ''
+			// before_after : false,
+			// date: 0,
+			// from: ''
 		}
 		dispatch(getTicketsFromServer(FilterParams))
 	}, [dispatch])

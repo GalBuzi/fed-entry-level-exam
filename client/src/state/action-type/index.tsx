@@ -11,9 +11,9 @@ export type jsonObj = {
 	 totalPages:number,
    searchVal : string,
    pageNum : number,
-   before_after : boolean,
-   date: number,
-   from: string
+  //  before_after : boolean,
+  //  date: number,
+  //  from: string
   }
 
   export interface GetTicketsByFilter {

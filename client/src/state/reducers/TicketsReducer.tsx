@@ -26,10 +26,11 @@ const ticketsReducer = (state : TicketsState = initialState, action : AllDispatc
         case GET_TICKETS_BY_FILTER:
             return {
                 tickets: action.payload.paginatedData.sort((a, b) => a.id.localeCompare(b.id)),
-                currentPage : action.payload.pageNum,
                 hiddenCurrentPageTickets: [],
+                currentPage : action.payload.pageNum,
                 totalPages : action.payload.totalPages,
                 search : action.payload.searchVal
+                
             } 
 
         case HIDE_TICKET:

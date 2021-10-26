@@ -10,9 +10,9 @@ import {
 export type FilterParams ={
   searchVal : string,
   pageNum : number,
-  before_after : boolean,
-  date: number,
-  from: string
+  // before_after : boolean,
+  // date: number,
+  // from: string
 }
 
 export const api = createApiClient()

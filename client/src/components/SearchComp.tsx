@@ -17,9 +17,9 @@ function SearchComp() {
 			let FilterParams = {
 				searchVal : val,
 				pageNum : 1,
-				before_after : false,
-				date: 0,
-				from: ''
+				// before_after : false,
+				// date: 0,
+				// from: ''
 			}
 			dispatch(getTicketsFromServer(FilterParams))
 		}, 500);

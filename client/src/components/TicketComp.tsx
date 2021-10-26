@@ -33,7 +33,7 @@ function TicketComp(props : React.PropsWithChildren<ITicketProps>) { //} : React
             expanded={false}
             width={0}
             truncatedEndingComponent={"... "}
-            >
+            > 
         <p className='content'>{props.content}</p>
         </ShowMoreText>
 				
