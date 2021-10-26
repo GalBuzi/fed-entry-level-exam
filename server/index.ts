@@ -113,7 +113,7 @@ app.get('/api/tickets', (req, res) => {
 			 pageNum: pageNum,
 			});
 	}
-	else if(filteredByDate.length>0 && filteredByEmail.length===0){ // exist Date and Email doesnt
+	else if(filteredByDate.length>0 && filteredByEmail.length===0){ // exist Date and Email doesn't
 		results = inBoth(filteredByDate,filteredBySearch)
 		const paginatedData = results.slice((pageNum - 1) * PAGE_SIZE, pageNum * PAGE_SIZE);
 		res.send({ 
@@ -123,7 +123,7 @@ app.get('/api/tickets', (req, res) => {
 			 pageNum: pageNum,
 			});
 	}
-	else if(filteredByDate.length>0 && filteredByEmail.length===0){ // Date doesnt exist and Email does
+	else if(filteredByDate.length>0 && filteredByEmail.length===0){ // Date doesn't exist and Email does
 		results = inBoth(filteredByDate,filteredBySearch)
 		const paginatedData = results.slice((pageNum - 1) * PAGE_SIZE, pageNum * PAGE_SIZE);
 		res.send({ 
