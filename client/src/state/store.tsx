@@ -4,10 +4,10 @@ import reducers from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const store = createStore(
-    reducers,
-    composeWithDevTools(applyMiddleware(thunk))
-)
+  reducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
-export type State = ReturnType<typeof reducers>
+export type State = ReturnType<typeof reducers>;
 
-export default store
+export default store;
