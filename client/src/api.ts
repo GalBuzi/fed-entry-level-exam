@@ -19,7 +19,9 @@ export type ApiClient = {
 export const createApiClient = (): ApiClient => {
 	return {
 		getTickets: (FilterParams:FilterParams) => {
-			return axios.get(`http://localhost:3232/api/tickets?${querystring.stringify(FilterParams)}`).then((res) => res.data);
+			// return axios.get(`http://localhost:3232/api/tickets?${querystring.stringify(FilterParams)}`).then((res) => res.data);
+			return axios.get(`http://localhost:3232/api/tickets`, {params : FilterParams}).then((res) => res.data);
+
 		}
 	}
 }
